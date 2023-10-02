@@ -1,26 +1,81 @@
-import { Injectable } from '@nestjs/common';
-import { CreateCategoryDto } from './dto/create-category.dto';
-import { UpdateCategoryDto } from './dto/update-category.dto';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common'
+import { CreateCategoryDto } from './dto/create-category.dto'
+import { UpdateCategoryDto } from './dto/update-category.dto'
+import { Repository } from 'typeorm'
+import { Category } from './entities/category.entity'
+import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()
 export class CategoryService {
-  create(createCategoryDto: CreateCategoryDto) {
-    return 'This action adds a new category';
+  constructor(
+    @InjectRepository(Category)
+    private readonly categoryRepo: Repository<Category>,
+  ) {}
+
+  async create(createCategoryDto: CreateCategoryDto, id: number) {
+    const isExist = await this.categoryRepo.findBy({
+      user: { id },
+      title: createCategoryDto.title,
+    })
+    if (isExist.length)
+      throw new BadRequestException('This category already exists!')
+    const newCategory = {
+      title: createCategoryDto.title,
+      user: {
+        id,
+      },
+    }
+    return await this.categoryRepo.save(newCategory)
   }
 
-  findAll() {
-    return `This action returns all category`;
+  async findAll(id: number) {
+    return await this.categoryRepo.find({
+      where: {
+        user: {
+          id,
+        },
+      },
+      relations: {
+        transactions: true,
+      },
+    })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  async findOne(id: number) {
+    const category = await this.categoryRepo.findOne({
+      where: { id },
+      relations: {
+        user: true,
+        transactions: true,
+      },
+    })
+    if (!category) throw new NotFoundException('Category Not Found')
+
+    return category
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
+  async update(id: number, updateCategoryDto: UpdateCategoryDto) {
+    const isExist = await this.categoryRepo.findOne({
+      where: { id },
+    })
+    if (!isExist) throw new NotFoundException('Category not found')
+
+    await this.categoryRepo.update(id, updateCategoryDto)
+    return await this.categoryRepo.findOne({
+      where: { id },
+    })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+  async remove(id: number) {
+    // const isExist = await this.categoryRepo.findOne({
+    //   where: { id },
+    // })
+    // if (!isExist) throw new NotFoundException('Category not found')
+
+    return await this.categoryRepo.delete(id)
   }
 }
