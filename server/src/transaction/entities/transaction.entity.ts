@@ -22,7 +22,8 @@ export class Transaction {
   type: string
 
   @Column()
-  amount: string
+  amount: number
+
   @ManyToOne(() => User, (user) => user.transactions)
   @JoinColumn({ name: 'user_id' })
   user: User
