@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common'
 import { CreateTransactionDto } from './dto/create-transaction.dto'
 import { UpdateTransactionDto } from './dto/update-transaction.dto'
 import { InjectRepository } from '@nestjs/typeorm'
@@ -7,6 +11,20 @@ import { Repository } from 'typeorm'
 
 @Injectable()
 export class TransactionService {
+  async findAllByType(type: string, id: number) {
+    const transactions = await this.transactionRepository.find({
+      where: { type: type, user: { id } },
+    })
+    const total = transactions.reduce((acc, obj) => acc + obj.amount, 0)
+    return total
+  }
+  async update(id: number, updateDto: UpdateTransactionDto) {
+    const transaction = await this.transactionRepository.findOne({
+      where: { id: id },
+    })
+    if (!transaction) throw new NotFoundException('Transaction not found')
+    return await this.transactionRepository.update(id, updateDto)
+  }
   constructor(
     @InjectRepository(Transaction)
     private readonly transactionRepository: Repository<Transaction>,
@@ -40,6 +58,18 @@ export class TransactionService {
 
   async remove(id: number) {
     return this.transactionRepository.delete(id)
+  }
+  async findOne(id: number) {
+    const category = await this.transactionRepository.findOne({
+      where: { id },
+      relations: {
+        user: true,
+        category: true,
+      },
+    })
+    if (!category) throw new NotFoundException('Category Not Found')
+
+    return category
   }
   async findAllWhitPagination(id: number, page: number, limit: number) {
     const transaction = await this.transactionRepository.find({
