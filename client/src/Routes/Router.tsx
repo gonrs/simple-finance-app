@@ -3,7 +3,10 @@ import LayOut from '../pages/LayOut'
 import ErrorPage from '../pages/ErrorPage'
 import Home from '../pages/Home'
 import Transaction from '../pages/Transaction'
-import Categoryes from '../pages/Categoryes'
+import Categoryes, {
+	categoriesAction,
+	categoryLoader,
+} from '../pages/Categoryes'
 import Auth from '../pages/Auth'
 import ProtectedRout from '../components/ProtectedRout'
 
@@ -27,6 +30,8 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'categories',
+				action: categoriesAction,
+				loader: categoryLoader,
 				element: (
 					<ProtectedRout needToBeLogin={true}>
 						<Categoryes />
