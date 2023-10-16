@@ -22,6 +22,20 @@ import { AuthorGuard } from 'src/guard/auth.guard'
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
+  @Get('getpaginations')
+  @UseGuards(JwtAuthGuard)
+  findAllWithPagination(
+    @Req() req,
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 3,
+  ) {
+    return this.transactionService.findAllWhitPagination(
+      +req.user.id,
+      +page,
+      +limit,
+    )
+  }
+
   @Get(':type/find')
   @UseGuards(JwtAuthGuard)
   findAllByType(@Param('type') type: string, @Req() req) {
@@ -55,19 +69,5 @@ export class TransactionController {
   @UseGuards(JwtAuthGuard, AuthorGuard)
   remove(@Param('id') id: string) {
     return this.transactionService.remove(+id)
-  }
-
-  @Get(':type/getpaginations')
-  @UseGuards(JwtAuthGuard, AuthorGuard)
-  findAllWithPagination(
-    @Req() req,
-    @Query('page') page: number,
-    @Query('limit') limit: number,
-  ) {
-    return this.transactionService.findAllWhitPagination(
-      +req.user.id,
-      +page,
-      +limit,
-    )
   }
 }

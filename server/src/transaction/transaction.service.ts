@@ -48,6 +48,9 @@ export class TransactionService {
   async findAll(id: number) {
     const transaction = await this.transactionRepository.find({
       where: { user: { id } },
+      relations: {
+        category: true,
+      },
       order: {
         createdAt: 'DESC',
       },

@@ -75,7 +75,9 @@ const Categoryes: FC = () => {
 							</div>
 						)
 					})}
-					{categories.length === 0 && <h1>Empty</h1>}
+					{categories.length === 0 && (
+						<h1 className='text-red-300'>You don`t have categories</h1>
+					)}
 				</div>
 				<button
 					onClick={() => setVisibleModal(true)}

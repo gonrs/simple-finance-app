@@ -9,6 +9,7 @@ import Categoryes, {
 } from '../pages/Categoryes'
 import Auth from '../pages/Auth'
 import ProtectedRout from '../components/ProtectedRout'
+import { transactionAction, transactionLoader } from '../pages/Transaction'
 
 export const router = createBrowserRouter([
 	{
@@ -22,6 +23,8 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'transactions',
+				action: transactionAction,
+				loader: transactionLoader,
 				element: (
 					<ProtectedRout needToBeLogin={true}>
 						<Transaction />
