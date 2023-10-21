@@ -32,15 +32,19 @@
   <h5>Server - </h5>
   <ul>
     <li>Node.js</li>
-    <li>Nest js</li>
+    <li>Nestjs</li>
+    <li>Nestjs-passport</li>
     <li>PostgreSQL</li>
+    <li>TypeORM</li>
     <li>JWT auth</li>
     <li>TypeScript</li>
   </ul>
   <h5>Client - </h5>
   <ul>
     <li>React</li>
-    <li>Redux</li>
+    <li>tailwindcss</li>
+    <li>React Forms</li>
+    <li>ReduxToolKit</li>
     <li>Vite</li>
     <li>TypeScript</li>
   </ul>
