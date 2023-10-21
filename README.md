@@ -1,4 +1,4 @@
-# finance-app-react-nestjs
+# app
 <div style="background-color: #f2f2f2; padding: 10px;">
   <h3>To start run:</h3>
   <ul>
