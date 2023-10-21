@@ -18,7 +18,7 @@
   <h3>To start a client:</h3>
   <p>Create a .env file with variables like this</p>
   <ul>
-    <li>VITE_URL</li>
+    <li>VITE_URL (server url like http://localhost:8000/api/ )</li>
   </ul>
   <h4>Then run it:</h3>
   <ul>
