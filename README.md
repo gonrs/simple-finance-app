@@ -1,7 +1,27 @@
 # app
+<style>
+  .code-block {
+    background-color: #f6f8fa;
+    border-radius: 4px;
+    padding: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+  
+  .code-block .env-variable {
+    color: #d73a49;
+  }
+  
+  .code-block .env-value {
+    color: #032f62;
+  }
+</style>
 <div style="background-color: #f2f2f2; padding: 10px;">
   <h3>To start a server:</h3>
-  <p>Create a .env file with variables like this</p>
+  <p>Create PostgreSQL data base.</p>
+  <p>Create a .env file in server folder with variables like this</p>
   <ul>
     <li>DB_HOST</li>
     <li>DB_PORT</li>
@@ -10,6 +30,18 @@
     <li>DB_NAME</li>
     <li>JWT_SECRET</li>
   </ul>
+  <p>DB example : </p>
+  <pre class="code-block">
+    <code>
+      DB_HOST='localhost'
+      DB_PORT=5432
+      DB_USERNAME='postgres'
+      DB_PASSWORD='qweqwe'
+      DB_NAME='rn'
+      JWT_SECRET='209D8Uu9hijdkoioiugy78u90jhgytuiokl;ijulyhtUIKIKHYUTFRFyguhioI
+      JHYUgtfrYGUhioJHYU'
+    </code>
+  </pre>
   <h4>Then run it:</h3>
   <ul>
     <li>cd server</li>
