@@ -11,7 +11,7 @@
     <li>DB_NAME</li>
     <li>JWT_SECRET</li>
   </ul>
-  <p>Serve .env example: </p>
+  <p>Server .env example: </p>
   <pre class="code-block">
     <code>
       DB_HOST='localhost'
