@@ -38,6 +38,7 @@
     <code>
       VITE_URL='http://localhost:8000/api/'
     </code>
+  </pre>
   <h4>Then run it:</h3>
   <ul>
     <li>cd client</li>
