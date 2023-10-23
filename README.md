@@ -1,23 +1,4 @@
 # app
-<style>
-  .code-block {
-    background-color: #f6f8fa;
-    border-radius: 4px;
-    padding: 16px;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.5;
-    overflow-x: auto;
-  }
-  
-  .code-block .env-variable {
-    color: #d73a49;
-  }
-  
-  .code-block .env-value {
-    color: #032f62;
-  }
-</style>
 <div style="background-color: #f2f2f2; padding: 10px;">
   <h3>To start a server:</h3>
   <p>Create PostgreSQL data base.</p>
