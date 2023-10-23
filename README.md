@@ -11,7 +11,7 @@
     <li>DB_NAME</li>
     <li>JWT_SECRET</li>
   </ul>
-  <p>DB example : </p>
+  <p>Serve .env example: </p>
   <pre class="code-block">
     <code>
       DB_HOST='localhost'
@@ -31,8 +31,13 @@
   <h3>To start a client:</h3>
   <p>Create a .env file with variables like this</p>
   <ul>
-    <li>VITE_URL (server url like http://localhost:8000/api/ )</li>
+    <li>VITE_URL</li>
   </ul>
+  <p>Client .env example: </p>
+  <pre class="code-block">
+    <code>
+      VITE_URL='http://localhost:8000/api/'
+    </code>
   <h4>Then run it:</h3>
   <ul>
     <li>cd client</li>
