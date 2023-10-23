@@ -26,6 +26,7 @@
   <h4>Then run it:</h3>
   <ul>
     <li>cd server</li>
+    <li>npm i</li>
     <li>npm run start:dev</li>
   </ul>
   <h3>To start a client:</h3>
