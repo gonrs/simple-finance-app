@@ -1,5 +1,4 @@
 # app
-<div style="background-color: #f2f2f2; padding: 10px;">
   <h3>To start a server:</h3>
   <p>Create PostgreSQL data base.</p>
   <p>Create a .env file in server folder with variables like this</p>
@@ -68,4 +67,3 @@
     <li>Vite</li>
     <li>TypeScript</li>
   </ul>
-</div>
