@@ -10,6 +10,7 @@ interface IData {
 	value: number
 	name: string
 }
+
 const Chart: FC<IChartProps> = ({ totalExpense, totalIncome }) => {
 	const data = new Array<IData>(
 		{ value: totalIncome, name: 'Incomes' },
